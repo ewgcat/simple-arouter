@@ -1,0 +1,17 @@
+apply plugin: 'java-library'
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'com.google.auto.service:auto-service:1.0-rc7'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc7'
+    // 帮助我们通过类调用的形式来生成Java代码
+    api "com.squareup:javapoet:1.13.0"
+}
+
+// java控制台输出中文乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
